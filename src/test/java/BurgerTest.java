@@ -57,22 +57,15 @@ public class BurgerTest {
     public void moveIngredientTest() {
         // Создаем объект бургера
         Burger newBurger = new Burger();
-        // Создаем ингредиенты соуса и котлеты для добавления
-        Ingredient ingredientSauce = new Ingredient(
-                IngredientType.SAUCE,
-                "Лучший соус этого города",
-                10
-        );
-        Ingredient ingredientMeat = new Ingredient(
-                IngredientType.FILLING,
-                "Почти лучшая котлета этого города",
-                11
-        );
+        // Создаем моки ингредиентов для добавления
+        // Создаем два мока ингредиентов
+        Ingredient mockIngredient1 = Mockito.mock(Ingredient.class);
+        Ingredient mockIngredient2 = Mockito.mock(Ingredient.class);
         // Создаем список с ожидаемым порядком для проверки после перемещения
-        List<Ingredient> ingredientsInExpectedOrder = List.of(ingredientSauce, ingredientMeat);
+        List<Ingredient> ingredientsInExpectedOrder = List.of(mockIngredient1, mockIngredient2);
         // Добавляем ингредиенты в обратном порядке, чтобы потом поменять
-        newBurger.addIngredient(ingredientMeat);
-        newBurger.addIngredient(ingredientSauce);
+        newBurger.addIngredient(mockIngredient2);
+        newBurger.addIngredient(mockIngredient1);
         // Меняем местами
         newBurger.moveIngredient(0, 1);
         // Проверяем с нашим объектом списка
